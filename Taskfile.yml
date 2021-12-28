@@ -5,8 +5,12 @@ vars:
     sh: "git rev-parse --show-toplevel"
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
 
+env:
+  KUBECONFIG: "{{.PROJECT_DIR}}/provision/kubeconfig"
+
 tasks:
   hello: "hello, world!"
 
 includes:
   ansible: .taskfiles/ansible.yml
+  flux: .taskfiles/flux.yml
