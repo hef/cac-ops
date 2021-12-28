@@ -14,3 +14,4 @@ tasks:
 includes:
   ansible: .taskfiles/ansible.yml
   flux: .taskfiles/flux.yml
+  terraform: .taskfiles/terraform.yml

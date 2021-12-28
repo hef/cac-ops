@@ -1,0 +1,27 @@
+---
+version: "3"
+
+tasks:
+  init:
+    desc: Initialize terraform
+    dir: provision/terraform
+    cmds:
+      - "terraform init"
+
+  plan:
+    desc: Show what terraform plans to do
+    dir: provision/terraform
+    cmds:
+      - "terraform plan"
+
+  fmt:
+    desc: format terraform files
+    dir: provision/terraform
+    cmds:
+      - "terraform fmt"
+
+  apply:
+    desc: Execute terraform changes
+    dir: provision/terraform
+    cmds:
+      - "terraform apply"
