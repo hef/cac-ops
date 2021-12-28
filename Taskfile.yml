@@ -5,5 +5,8 @@ vars:
     sh: "git rev-parse --show-toplevel"
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
 
+tasks:
+  hello: "hello, world!"
+
 includes:
   ansible: .taskfiles/ansible.yml

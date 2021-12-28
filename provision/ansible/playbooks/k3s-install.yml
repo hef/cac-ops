@@ -1,0 +1,33 @@
+---
+- hosts:
+    - master
+    - worker
+  gather_facts: yes
+  any_errors_fatal: yes
+  tasks:
+    - name: check if cluster is installed
+      ansible.builtin.stat:
+        path: /etc/racher/k3s/config.yaml
+      register: k3s_check_installed
+      check_mode: no
+    - name: Install Kubernetes
+      include_role:
+        name: xanmanning.k3s
+        public: yes
+
+    - name: Get absolute path to this Git repository
+      delegate_to: localhost
+      become: false
+      run_once: true
+      ansible.builtin.command: "git rev-parse --show-toplevel"
+      register: repo_abs_path
+
+    - name: Copy kubeconfig to provision folder
+      run_once: true
+      ansible.builtin.fetch:
+        src: "/etc/rancher/k3s/k3s.yaml"
+        dest: "{{ repo_abs_path.stdout }}/provision/kubeconfig"
+        flat: true
+      when:
+        - k3s_control_node is defined
+        - k3s_control_node

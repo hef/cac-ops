@@ -1,0 +1,4 @@
+---
+- import_tasks: network.yml
+  tags:
+    - network

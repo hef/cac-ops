@@ -1,0 +1,40 @@
+---
+- hosts:
+    - master
+    - worker
+  tasks:
+    - name: upgrade
+      ansible.builtin.apt:
+        upgrade: full
+        update_cache: yes
+        cache_valid_time: 3600
+        autoclean: yes
+        autoremove: yes
+      register: apt_upgrade
+      retries: 5
+      until: apt_upgrade is successful
+
+    - name: Check if reboot is required
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required_file
+
+    - name: Reboot if required
+      ansible.builtin.reboot:
+      when: reboot_required_file.stat.exists == true
+
+    - block:
+      - name: Ensure update-manager-core is installed
+        ansible.builtin.apt:
+          name: update-manager-core
+          state: present
+
+      - name: Run do-release-upgrade non-interactivly
+        ansible.builtin.command: do-release-upgrade -f DistUpgradeViewNonInteractive
+
+      - name: Reboot the server
+        ansible.builtin.reboot:
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - ansible_distribution_version != '20.04'
+
