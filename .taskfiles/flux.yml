@@ -2,6 +2,13 @@
 version: "3"
 
 tasks:
+  bootstrap:
+    desc: Load flux into cluster
+    cmds:
+      - cmd: kubectl --kubeconfig={{.PROJECT_DIR}}/provision/kubeconfig apply --kustomize={{.PROJECT_DIR}}/cluster/base/flux-system
+        ignore_error: true
+      - kubectl --kubeconfig={{.PROJECT_DIR}}/provision/kubeconfig apply --kustomize={{.PROJECT_DIR}}/cluster/base/flux-system
+
   sync:
     desc: Sync flux-system with the Git Repository
     cmds:
