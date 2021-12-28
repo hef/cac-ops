@@ -1,6 +1,7 @@
 k3s_control_node: true
 k3s_server:
   node-ip: "{{ ansible_host }}"
+  flannel-backend: wireguard
   disable:
     - traefik
     - metrics-server

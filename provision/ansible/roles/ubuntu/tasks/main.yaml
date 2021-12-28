@@ -1,4 +1,7 @@
 ---
+- import_tasks: packages.yml
+  tags:
+    - packages
 - import_tasks: network.yml
   tags:
     - network
