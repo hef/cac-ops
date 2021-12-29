@@ -31,3 +31,8 @@ data "cloudflare_zones" "domain" {
 resource "cloudflare_zone_settings_override" "settings" {
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
 }
+
+resource "cloudflare_authenticated_origin_pulls" "main" {
+  zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
+  enabled = true
+}
