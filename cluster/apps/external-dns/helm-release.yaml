@@ -14,6 +14,12 @@ spec:
         name: external-dns-charts
         namespace: flux-system
   values:
+    env:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: secrets
+            key: cloudflare_api_token
     sources:
       - service
       - ingress
@@ -22,8 +28,6 @@ spec:
       - hef.wtf
     policy: sync
     txtOwnerId: external-dns
-    cloudflare:
-      secretName: secrets
     resources:
       requests:
         memory: 100Mi
