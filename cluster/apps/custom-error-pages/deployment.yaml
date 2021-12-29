@@ -14,10 +14,7 @@ spec:
     spec:
       containers:
         - name: custom-error-pages
-          image: ghcr.io/181192/custom-error-pages:1.2.1
-          env:
-            - name: ERROR_FILES_PATH
-              value: ./themes/shuffle
+          image: ghcr.io/tarampampam/error-pages:2.2.0
           ports:
             - containerPort: 8080
               name: http
