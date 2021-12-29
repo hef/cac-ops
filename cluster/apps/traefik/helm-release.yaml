@@ -39,6 +39,8 @@ spec:
           secretNames:
             - secret-ca
           clientAuthType: RequireAndVerifyClientCert
+    service:
+      type: NodePort
     hostNetwork: true
     resources:
       requests:
