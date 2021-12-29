@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: custom-error-pages
+spec:
+  rules:
+    - host: hef.wtf
+      http:
+        paths:
+          - backend:
+              service:
+                name: custom-error-pages
+                port:
+                  name: http
+            pathType: Prefix
+            path: /

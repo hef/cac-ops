@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-error-pages
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-error-pages
+  template:
+    metadata:
+      labels:
+        app: custom-error-pages
+    spec:
+      containers:
+        - name: custom-error-pages
+          image: ghcr.io/181192/custom-error-pages:1.2.1
+          env:
+            - name: ERROR_FILES_PATH
+              value: ./themes/shuffle
+          ports:
+            - containerPort: 8080
+              name: http
+
