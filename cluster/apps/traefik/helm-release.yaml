@@ -20,7 +20,7 @@ spec:
     providers:
       kubernetesIngress:
         publishedService:
-          enabled: false
+          enabled: true
     ingressClass:
       enabled: true
       isDefaultClass: true
@@ -40,8 +40,8 @@ spec:
             - secret-ca
           clientAuthType: RequireAndVerifyClientCert
     service:
-      enabled: false
-      type: NodePort
+      enabled: true
+      type: ClusterIP
     hostNetwork: true
     resources:
       requests:
