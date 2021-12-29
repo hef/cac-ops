@@ -16,7 +16,7 @@ spec:
   values:
     deployment:
       replicas: 3
-      dnsPolicy: ClusterFirstWithHostNet
+      #dnsPolicy: ClusterFirstWithHostNet
     providers:
       kubernetesIngress:
         publishedService:
@@ -35,14 +35,15 @@ spec:
           enabled: true
     tlsOptions:
       default:
+        # Only allow Cloudfront to reach us
         clientAuth:
           secretNames:
             - secret-ca
           clientAuthType: RequireAndVerifyClientCert
     service:
       enabled: true
-      type: ClusterIP
-    hostNetwork: true
+      type: NodePort
+    #hostNetwork: true
     resources:
       requests:
         memory: 100Mi
