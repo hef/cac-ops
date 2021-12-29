@@ -42,7 +42,7 @@ spec:
           clientAuthType: RequireAndVerifyClientCert
     service:
       enabled: true
-      type: NodePort
+      type: LoadBalancer
     #hostNetwork: true
     resources:
       requests:
