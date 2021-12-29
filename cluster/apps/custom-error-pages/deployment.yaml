@@ -14,7 +14,10 @@ spec:
     spec:
       containers:
         - name: custom-error-pages
-          image: ghcr.io/tarampampam/error-pages:2.2.0
+          image: ghcr.io/tarampampam/error-pages:2.2.
+          env:
+            - name: TEMPLATE_NAME
+              value: hacker-terminal
           ports:
             - containerPort: 8080
               name: http
