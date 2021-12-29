@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - namespace.yaml
+  - https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
