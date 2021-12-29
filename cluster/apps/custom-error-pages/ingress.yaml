@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: custom-error-pages
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   rules:
     - host: hef.wtf
