@@ -28,7 +28,7 @@ spec:
       - hef.wtf
     policy: sync
     txtOwnerId: external-dns
-    args:
+    extraArgs:
       - --cloudflare-proxied
     resources:
       requests:
