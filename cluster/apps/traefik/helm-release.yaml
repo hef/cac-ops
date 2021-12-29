@@ -30,6 +30,12 @@ spec:
       websecure:
         tls:
           enabled: true
+    tlsOptions:
+      default:
+        clientAuth:
+          secretNames:
+            - secretCa
+          clientAuthType: RequireAndVerifyClientCert
     resources:
       requests:
         memory: 100Mi
