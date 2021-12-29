@@ -14,6 +14,10 @@ spec:
         name: jetstack-charts
         namespace: flux-system
   values:
+    ingressShim:
+      defaultIssuerName: "letsencrypt-production"
+      defaultIssuerKind: "ClusterIssuer"
+      defaultIssuerGroup: "cert-manager.io"
     podDnsPolicy: "None"
     podDnsConfig:
       nameservers:
