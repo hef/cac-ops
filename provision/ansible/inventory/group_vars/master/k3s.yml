@@ -3,5 +3,6 @@ k3s_server:
   node-ip: "{{ ansible_host }}"
   flannel-backend: wireguard
   disable:
-    - traefik
+    - servicelb
     - metrics-server
+    - traefik
