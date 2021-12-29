@@ -16,6 +16,7 @@ spec:
   values:
     deployment:
       replicas: 3
+      dnsPolicy: ClusterFirstWithHostNet
     providers:
       kubernetesIngress:
         publishedService:
@@ -38,8 +39,7 @@ spec:
           secretNames:
             - secret-ca
           clientAuthType: RequireAndVerifyClientCert
-    service:
-      type: NodePort
+    hostNetwork: true
     resources:
       requests:
         memory: 100Mi
