@@ -13,3 +13,14 @@ spec:
         kind: HelmRepository
         name: external-dns-charts
         namespace: flux-system
+  values:
+    sources:
+      - service
+      - ingress
+    provider: cloudflare
+    domainFilters:
+      hef.wtf
+    policy: sync
+    txtOwnerId: external-dns
+    cloudflare:
+      secretName: secrets
