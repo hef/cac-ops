@@ -34,7 +34,7 @@ spec:
       default:
         clientAuth:
           secretNames:
-            - secretCa
+            - secret-ca
           clientAuthType: RequireAndVerifyClientCert
     resources:
       requests:
