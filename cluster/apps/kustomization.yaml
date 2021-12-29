@@ -4,6 +4,5 @@ resources:
   - cert-manager
   - custom-error-pages
   - external-dns
-  - ipfs
   - metrics-server
   - traefik
