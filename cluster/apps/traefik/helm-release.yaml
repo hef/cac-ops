@@ -14,6 +14,10 @@ spec:
         name: traefik-charts
         namespace: flux-system
   values:
+    providers:
+      kubernetesIngress:
+        publishedService:
+          enabled: true
     ingressClass:
       enabled: true
       isDefaultClass: true

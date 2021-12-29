@@ -7,5 +7,6 @@ spec:
     app: custom-error-pages
   ports:
     - protocol: TCP
+      name: http
       port: 80
       targetPort: http
