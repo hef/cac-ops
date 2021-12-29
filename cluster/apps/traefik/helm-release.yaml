@@ -14,6 +14,18 @@ spec:
         name: traefik-charts
         namespace: flux-system
   values:
+    ingressClass:
+      enabled: true
+      isDefaultClass: true
+    ingressRoute:
+      dashboard:
+        enabled: false
+    ports:
+      web:
+        redirectTo: websecure
+      websecure:
+        tls:
+          enabled: true
     resources:
       requests:
         memory: 100Mi
