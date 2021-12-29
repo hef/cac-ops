@@ -2,15 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: metrics-server
-  namespace: kube-system
+  name: ipfs-cluster
+  namespace: ipfs
 spec:
   interval: 15m
   chart:
     spec:
-      chart: metrics-server
+      chart: helm-ipfs-cluster
       sourceRef:
         kind: HelmRepository
-        name: metrics-server-charts
+        name: monaparty
         namespace: flux-system
-  values:

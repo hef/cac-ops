@@ -4,4 +4,5 @@ resources:
   - external-dns-charts.yaml
   - jetstack-charts.yaml
   - metrics-server-charts.yaml
+  - monaparty-charts.yaml
   - traefik-charts.yaml
