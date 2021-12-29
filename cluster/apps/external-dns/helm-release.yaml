@@ -19,7 +19,7 @@ spec:
       - ingress
     provider: cloudflare
     domainFilters:
-      hef.wtf
+      - hef.wtf
     policy: sync
     txtOwnerId: external-dns
     cloudflare:
