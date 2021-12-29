@@ -19,4 +19,4 @@ spec:
   tls:
     - hosts:
         - hef.wtf
-    - secretName: hef.wtf-tls
+      secretName: hef.wtf-tls

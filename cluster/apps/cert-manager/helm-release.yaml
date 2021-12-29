@@ -13,3 +13,9 @@ spec:
         kind: HelmRepository
         name: jetstack-charts
         namespace: flux-system
+  values:
+    podDnsPolicy: "None"
+    podDnsConfig:
+      nameservers:
+        - "1.1.1.1"
+        - "9.9.9.9"
