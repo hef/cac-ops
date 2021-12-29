@@ -28,6 +28,8 @@ spec:
       - hef.wtf
     policy: sync
     txtOwnerId: external-dns
+    args:
+      - --cloudflare-proxied
     resources:
       requests:
         memory: 100Mi
