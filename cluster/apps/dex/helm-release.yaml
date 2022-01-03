@@ -30,4 +30,4 @@ spec:
       tls:
         - hosts:
            - dex.hef.wtf
-          secretName: dex.hef.wtf
+          secretName: dex.hef.wtf-tls
