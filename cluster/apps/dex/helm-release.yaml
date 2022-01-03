@@ -28,6 +28,6 @@ spec:
             - path: /
               pathType: Prefix
       tls:
-        - secreName: dex.hef.wtf-tls
+        - secretName: dex.hef.wtf-tls
           hosts:
            - dex.hef.wtf
