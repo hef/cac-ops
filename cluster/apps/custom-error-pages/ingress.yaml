@@ -4,6 +4,7 @@ metadata:
   name: custom-error-pages
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-traefik-sso@kubernetescrd
 spec:
   rules:
     - host: hef.wtf
