@@ -14,11 +14,21 @@ spec:
         name: dex-charts
         namespace: flux-system
   values:
+    envFrom:
+      - secretRef:
+          name: dex-secrets
     config:
       issuer: https://dex.hef.wtf
       storage:
         type: memory
-      enablePasswordDB: true
+      connectors:
+        - type: google
+          id: google
+          name: Google
+          config:
+            clientID: $GOOGLE_CLIENT_ID
+            clientSecret: $GOOGLE_CLIENT_SECRET
+            redirectURI: https://dex.hef.wtf/callback
     ingress:
       enabled: true
       className: traefik
