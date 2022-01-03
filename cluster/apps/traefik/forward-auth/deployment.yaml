@@ -4,6 +4,8 @@ metadata:
   name: traefik-sso
   labels:
     app: traefik-sso
+  annotations:
+    secret.reloader.stakater.com/reload: "traefik-sso"
 spec:
   template:
     metadata:
