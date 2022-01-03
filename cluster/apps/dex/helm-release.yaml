@@ -26,6 +26,7 @@ spec:
         - hosts: dex.hef.wtf
           paths:
             - path: /
+              pathType: Prefix
       tls:
         - hosts:
            - dex.hef.wtf
