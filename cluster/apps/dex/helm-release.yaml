@@ -23,7 +23,7 @@ spec:
       className: traefik
       enabled: true
       hosts:
-        - hosts: dex.hef.wtf
+        - host: dex.hef.wtf
           paths:
             - path: /
               pathType: Prefix
