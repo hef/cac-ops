@@ -33,6 +33,7 @@ spec:
       websecure:
         tls:
           enabled: true
+    additionalArguments:
     tlsOptions:
       default:
         # Only allow Cloudfront to reach us

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik-sso
+  labels:
+    app: traefik-sso
+spec:
+  template:
+    metadata:
+      labels:
+        app: traefik-sso
+    spec:
+      containers:
+        - name: traefik-sso
+          image: thomseddon/traefik-forward-auth:2
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: traefik-sso
+          env:
+            - name: LOG_LEVEL
+              value: debug
+          ports:
+            - containerPort: 4181
+  selector:
+    matchLabels:
+      app: traefik-sso

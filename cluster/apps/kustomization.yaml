@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - custom-error-pages
+  - dex
   - external-dns
   - metrics-server
   - traefik
