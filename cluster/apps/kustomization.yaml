@@ -6,4 +6,5 @@ resources:
   - dex
   - external-dns
   - metrics-server
+  - reloader
   - traefik
