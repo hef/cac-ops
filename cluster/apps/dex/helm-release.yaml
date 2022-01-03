@@ -21,7 +21,8 @@ spec:
       enablePasswordDB: true
     ingress:
       className: traefik
-      enabled:
+      enabled: true
+      hosts:
         - hosts: dex.hef.wtf
           paths:
             - path: /
