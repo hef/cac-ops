@@ -20,8 +20,10 @@ spec:
         type: memory
       enablePasswordDB: true
     ingress:
-      className: traefik
       enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
         - host: dex.hef.wtf
           paths:
