@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: custom-error-pages
+  name: error-pages
 spec:
   selector:
-    app: custom-error-pages
+    app: error-pages
   ports:
     - protocol: TCP
       name: http
