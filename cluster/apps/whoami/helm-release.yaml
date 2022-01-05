@@ -24,6 +24,6 @@ spec:
           paths:
             - "/"
       tls:
-        - secrename: whoami.hef.sh-tls
+        - secretName: whoami.hef.sh-tls
           hosts:
             - whoami.hef.sh
