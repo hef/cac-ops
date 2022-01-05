@@ -20,7 +20,7 @@ spec:
       enabled: true
       ingressClassName: traefik
       hosts:
-        - host: whoami.hef.sh
+        - host: whoami.hef.wtf
           paths:
             - "/"
       tls:

@@ -28,8 +28,8 @@ spec:
       dashboard:
         enabled: false
     globalArguments:
-      - "--entrypoints.websecure.http.middlewares=traefik-error-pages@kubernetescrd"
       - "--entrypoints.websecure.http.middlewares=traefik-google-sso@kubernetescrd"
+      - "--entrypoints.websecure.http.middlewares=traefik-error-pages@kubernetescrd"
     ports:
       web:
         redirectTo: websecure
