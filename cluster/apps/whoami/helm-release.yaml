@@ -23,7 +23,11 @@ spec:
         - host: whoami.hef.wtf
           paths:
             - "/"
+        - host: hef.wtf
+          paths:
+            - "/"
       tls:
         - secretName: whoami.hef.wtf-tls
           hosts:
+            - hef.wtf
             - whoami.hef.wtf
