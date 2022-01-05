@@ -7,3 +7,4 @@ resources:
   - metrics-server
   - reloader
   - traefik
+  - whoami
