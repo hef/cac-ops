@@ -19,7 +19,8 @@ spec:
       ingressClassName: traefik
       hosts:
         - host: whoami.hef.sh
-          paths: "/"
+          paths:
+            - "/"
       tls:
         - secrename: whoami.hef.sh-tls
           hosts:
