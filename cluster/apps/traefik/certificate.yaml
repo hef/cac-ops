@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hef.wtf
+  namespace: traefik
+spec:
+  secretName: hef.wtf-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: hef.wtf
+  dnsNames:
+    - "hef.wtf"
+    - "*.hef.wtf"
