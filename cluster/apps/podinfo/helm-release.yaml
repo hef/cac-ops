@@ -1,0 +1,27 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: podinfo
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: podinfo
+      sourceRef:
+        kind: HelmRepository
+        name: podinfo-charts
+        namespace: flux-system
+  values:
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      enabled: true
+      ClassName: traefik
+      hosts:
+        - host: podinfo.hef.wtf
+      tls:
+        - secretName: podinfo.hef.wtf-tls
+          hosts:
+            - podinfo.hef.wtf

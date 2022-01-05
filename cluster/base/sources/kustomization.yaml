@@ -6,5 +6,6 @@ resources:
   - external-dns-charts.yaml
   - jetstack-charts.yaml
   - metrics-server-charts.yaml
+  - podinfo-charts.yaml
   - stackater-charts.yaml
   - traefik-charts.yaml

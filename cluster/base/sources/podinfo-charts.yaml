@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: podinfo-charts
+  namespace: flux-system
+spec:
+  interval: 4h
+  url: https://stefanprodan.github.io/podinfo
+  timeout: 3m
