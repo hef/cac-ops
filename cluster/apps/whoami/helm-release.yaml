@@ -15,6 +15,8 @@ spec:
         namespace: flux-system
   values:
     ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
       enabled: true
       ingressClassName: traefik
       hosts:
