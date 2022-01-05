@@ -21,6 +21,9 @@ spec:
       ClassName: traefik
       hosts:
         - host: podinfo.hef.wtf
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - secretName: podinfo.hef.wtf-tls
           hosts:
