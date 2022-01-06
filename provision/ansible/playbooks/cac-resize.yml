@@ -34,9 +34,12 @@
     - name: move data from  /dev/sda2
       ansible.builtin.command:
         cmd: pvmove /dev/sda2
+      ignore_errors: yes
     - name: remove /dev/sda2 from vg
       ansible.builtin.command:
-        cmd: vgreduce ubuntu-vg /dev/sda2
+        cmd: vgreduce ubuntu-vg /dev/sda
+      ignore_errors: yes
     - name: wipefs from /dev/sda2
       ansible.builtin.command:
         cmd: wipefs /dev/sda2
+      ignore_errors: yes # remove this
