@@ -1,0 +1,42 @@
+---
+- hosts:
+    - master
+    - worker
+  gather_facts: yes
+  any_errors_fatal: yes
+  tasks:
+    - name: copy resize2fs
+      ansible.builtin.copy:
+        dest: /etc/initramfs-tools/hooks/resize2fs
+        src: ../files/resize2fs
+        mode: 0755
+    - name: copy resizefs
+      ansible.builtin.copy:
+        dest: /etc/initramfs-tools/scripts/init-premount/resize
+        src: ../files/resize
+        mode: 0755
+    - name: run update-initramfs
+      ansible.builtin.command:
+        cmd: update-initramfs -v -u
+    - name: remove resize2fs
+      ansible.builtin.file:
+        path: /etc/initramfs-tools/hooks/resize2fs
+        state: absent
+    - name: remove resize2fs
+      ansible.builtin.file:
+        path: /etc/initramfs-tools/scripts/init-premount/resize
+        state: absent
+    - name: reboot
+      ansible.builtin.reboot:
+    - name: run update-initramfs again
+      ansible.builtin.command:
+        cmd: update-initramfs -v -u
+    - name: move data from  /dev/sda2
+      ansible.builtin.command:
+        cmd: pvmove /dev/sda2
+    - name: remove /dev/sda2 from vg
+      ansible.builtin.command:
+        cmd: vgreduce ubuntu-vg /dev/sda2
+    - name: wipefs from /dev/sda2
+      ansible.builtin.command:
+        cmd: wipefs /dev/sda2

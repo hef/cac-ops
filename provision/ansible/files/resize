@@ -1,0 +1,26 @@
+#!/bin/sh
+PREREQ=""
+prereqs() {
+    echo "$PREREQ"
+}
+case "$1" in
+    prereqs)
+        prereqs
+        exit 0
+        ;;
+esac
+# New size of root filesystem
+ROOT_SIZE="8G"
+# Convert root from possible UUID to device name
+echo "root=${ROOT}  "
+ROOT_DEVICE="$(/sbin/findfs "$ROOT")"
+echo "root device name is ${ROOT_DEVICE}  "
+# Make sure LVM volumes are activated
+if [ -x /sbin/vgchange ]; then
+    /sbin/vgchange -a y || echo "vgchange: $?  "
+fi
+# Check root filesystem
+/sbin/e2fsck -y -v -f "$ROOT_DEVICE" || echo "e2fsck: $?  "
+# Resize
+# debug-flag 8 means debug moving the inode table
+/sbin/resize2fs -d 8 "$ROOT_DEVICE" "$ROOT_SIZE" || echo "resize2fs: $?  "
