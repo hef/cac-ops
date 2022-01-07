@@ -7,5 +7,6 @@ resources:
   - jetstack-charts.yaml
   - metrics-server-charts.yaml
   - podinfo-charts.yaml
+  - rook-ceph-charts.yaml
   - stackater-charts.yaml
   - traefik-charts.yaml
