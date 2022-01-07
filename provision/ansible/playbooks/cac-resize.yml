@@ -42,4 +42,4 @@
     - name: wipefs from /dev/sda2
       ansible.builtin.command:
         cmd: wipefs /dev/sda2
-      ignore_errors: yes # remove this
+      ignore_errors: yes # remove this. Fails when /dev/sda2 does not exist

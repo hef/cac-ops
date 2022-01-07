@@ -6,6 +6,7 @@ resources:
   - external-dns
   - metrics-server
   - podinfo
+  - rook-ceph
   - reloader
   - traefik
   - whoami
