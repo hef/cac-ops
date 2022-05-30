@@ -9,8 +9,8 @@ spec:
   chart:
     spec:
       chart: metrics-server
+      version: 3.8.2
       sourceRef:
         kind: HelmRepository
         name: metrics-server-charts
         namespace: flux-system
-  values:

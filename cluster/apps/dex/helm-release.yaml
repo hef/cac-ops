@@ -9,10 +9,12 @@ spec:
   chart:
     spec:
       chart: dex
+      version: 0.8.3
       sourceRef:
         kind: HelmRepository
         name: dex-charts
         namespace: flux-system
+
   values:
     envFrom:
       - secretRef:
