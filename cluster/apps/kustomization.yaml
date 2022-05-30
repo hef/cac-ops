@@ -7,6 +7,7 @@ resources:
   - metrics-server
   - podinfo
   #- rook-ceph
+  - simplelb
   - reloader
   - traefik
   - whoami

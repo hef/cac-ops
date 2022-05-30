@@ -1,0 +1,88 @@
+---
+# Source: simplelb/templates/service_account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: simplelb
+  namespace: kube-system
+---
+# Source: simplelb/templates/cluster_role.yaml
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: simplelb
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - services
+      - replicasets
+      - nodes
+    verbs:
+      - list
+      - get
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - services/status
+    verbs:
+      - update
+  - apiGroups:
+      - apps
+    resources:
+      - daemonsets
+    verbs:
+      - "*"
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - "*"
+---
+# Source: simplelb/templates/cluster_role_binding.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: simplelb
+subjects:
+  - kind: ServiceAccount
+    name: simplelb
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: simplelb
+  apiGroup: rbac.authorization.k8s.io
+---
+# Source: simplelb/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplelb
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: simplelb
+  template:
+    metadata:
+      labels:
+        name: simplelb
+    spec:
+      serviceAccountName: simplelb
+      containers:
+        - name: simplelb
+          image: ghcr.io/amurant/simplelb:v1.0.1
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: 20M
+              cpu: 100m
+            limits:
+              memory: 100M
+              cpu: 200m
+          args:
+            - --portforward-image=ghcr.io/amurant/simplelb-portforward:v1.0.1
