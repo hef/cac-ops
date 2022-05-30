@@ -14,3 +14,4 @@
     sysctl_overwrite:
       net.ipv4.ip_forward: 1
     ssh_permit_root_login: 'without-password'
+    sftp_enabled: true

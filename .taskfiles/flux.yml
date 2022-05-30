@@ -13,4 +13,16 @@ tasks:
     desc: Sync flux-system with the Git Repository
     cmds:
       - flux reconcile source git flux-system
+      - flux reconcile kustomization apps
     silent: true
+
+  secret:
+    desc: inject secret
+    cmds:
+      - kubectl --kubeconfig={{.PROJECT_DIR}}/provision/kubeconfig -n flux-system create secret generic sops-age --from-file=age.agekey=${SOPS_AGE_KEY_FILE}
+
+  helm-retry:
+    desc: Retry all failed Helm Releases
+    cmds:
+      - kubectl get helmrelease --all-namespaces | grep False | awk '{print $2, $1}' | xargs -l bash -c 'flux suspend helmrelease $0 -n $1'
+      - kubectl get helmrelease --all-namespaces | grep False | awk '{print $2, $1}' | xargs -l bash -c 'flux resume helmrelease $0 -n $1'
