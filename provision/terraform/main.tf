@@ -18,6 +18,7 @@ data "sops_file" "secrets" {
 }
 
 provider "cloudflare" {
+  version = "3.15.0"
   email   = data.sops_file.secrets.data["cloudflare_email"]
   api_token = data.sops_file.secrets.data["cloudflare_api_token"]
 }
