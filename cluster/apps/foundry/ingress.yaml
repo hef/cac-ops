@@ -1,8 +1,11 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: foundry
   namespace: foundry
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: foundry-server-headers@kubernetescrd
 spec:
   rules:
     - host: foundry.hef.wtf
