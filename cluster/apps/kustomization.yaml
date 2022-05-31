@@ -4,7 +4,7 @@ resources:
   - cert-manager
   - dex
   - external-dns
-  #- longhorn
+  - longhorn
   - metrics-server
   - podinfo
   # - rook-ceph
