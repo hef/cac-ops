@@ -29,8 +29,13 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: data
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: foundry-data
   serviceName: foundry
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
