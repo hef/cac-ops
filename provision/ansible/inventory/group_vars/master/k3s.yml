@@ -6,3 +6,4 @@ k3s_server:
     - servicelb
     - metrics-server
     - traefik
+    - local-storage
