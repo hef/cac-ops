@@ -38,13 +38,13 @@ spec:
         tls:
           enabled: true
     additionalArguments:
-#    tlsOptions:
-#      default:
-#        # Only allow Cloudfront to reach us
-#        clientAuth:
-#          secretNames:
-#            - secret-ca
-#          clientAuthType: RequireAndVerifyClientCert
+    tlsOptions:
+      default:
+        # Only allow Cloudfront to reach us
+        clientAuth:
+          secretNames:
+            - secret-ca
+          clientAuthType: RequireAndVerifyClientCert
     service:
       enabled: true
       type: LoadBalancer

@@ -30,7 +30,7 @@ spec:
     policy: sync
     txtOwnerId: external-dns
     extraArgs:
-    #  - --cloudflare-proxied
+      - --cloudflare-proxied
     resources:
       requests:
         memory: 100Mi
