@@ -5,6 +5,7 @@ resources:
   - dex-charts.yaml
   - external-dns-charts.yaml
   - jetstack-charts.yaml
+  - longhorn-charts.yaml
   - metrics-server-charts.yaml
   - podinfo-charts.yaml
   - rook-ceph-charts.yaml

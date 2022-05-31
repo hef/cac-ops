@@ -4,9 +4,10 @@ resources:
   - cert-manager
   - dex
   - external-dns
+  - longhorn
   - metrics-server
   - podinfo
-  #- rook-ceph
+  # - rook-ceph
   - simplelb
   - reloader
   - traefik
