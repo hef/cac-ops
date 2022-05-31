@@ -9,4 +9,4 @@ spec:
   ports:
     - name: http
       targetPort: http
-      port: 3000
+      port: 30000

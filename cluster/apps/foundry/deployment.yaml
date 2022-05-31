@@ -19,7 +19,7 @@ spec:
             - secretRef:
                 name: foundry-secrets
           ports:
-            - containerPort: 3000
+            - containerPort: 30000
               name: http
           volumeMounts:
             - mountPath: /data
