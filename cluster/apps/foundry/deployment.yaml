@@ -18,6 +18,11 @@ spec:
           envFrom:
             - secretRef:
                 name: foundry-secrets
+          env:
+            - name: FOUNDRY_HOSTNAME
+              value: foundry.hef.wtf
+            - name: FOUNDRY_PROXY_SSL
+              value: "true"
           ports:
             - containerPort: 30000
               name: http
