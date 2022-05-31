@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foundry
+  namespace: foundry
+spec:
+  selector:
+    matchLabels:
+      app: foundry
+  template:
+    metadata:
+      labels:
+        app: foundry
+    spec:
+      containers:
+        - name: foundryvtt
+          image: felddy/foundryvtt:9.269.0
+          envFrom:
+            - secretRef:
+                name: foundry-secrets
+          ports:
+            - containerPort: 3000
+              name: http
+          volumeMounts:
+            - mountPath: /data
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: foundry-data

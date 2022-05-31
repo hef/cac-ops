@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foundry
+  namespace: foundry
+spec:
+  rules:
+    - host: foundry.hef.wtf
+      http:
+        paths:
+          - backend:
+              service:
+                name: foundry
+                port:
+                  name: http
+            pathType: Prefix
+            path: /
