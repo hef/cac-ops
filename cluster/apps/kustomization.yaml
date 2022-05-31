@@ -4,6 +4,7 @@ resources:
   - cert-manager
   - dex
   - external-dns
+  - foundry
   - longhorn
   - metrics-server
   - podinfo
