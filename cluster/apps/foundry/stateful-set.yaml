@@ -23,6 +23,8 @@ spec:
               value: foundry.hef.wtf
             - name: FOUNDRY_PROXY_SSL
               value: "true"
+            - name: FOUNDRY_PROXY_PORT
+              value: "443"
           ports:
             - containerPort: 30000
               name: http
