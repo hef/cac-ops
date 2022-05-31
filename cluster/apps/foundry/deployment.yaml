@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: foundry
   namespace: foundry
@@ -28,3 +28,4 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: foundry-data
+  serviceName: foundry
