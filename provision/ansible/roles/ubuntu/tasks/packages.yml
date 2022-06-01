@@ -18,17 +18,43 @@
       - ca-certificates
       - curl
       - ebtables
+      - gdisk
+      - hdparm
+      - htop
       - iputils-ping
       - ipvsadm
+      - jq
       - lvm2
+      - nano
       - net-tools
       - nfs-common
+      - nvme-cli
       - open-iscsi
       - psmisc
       - smartmontools
+      - socat
       - software-properties-common
       - unattended-upgrades
+      - unzip
       - wireguard
+    install_recommends: false
+    update_cache: true
+    cache_valid_time: 3600
+    autoclean: true
+    autoremove: true
+  register: apt_install_common
+  retries: 5
+  until: apt_install_common is success
+
+- name: Uninstall Packages
+  ansible.builtin.apt:
+    state: absent
+    name:
+      # Multipathd breaks longhorn, and we don't need any of its features.
+      # https://longhorn.io/kb/troubleshooting-volume-with-multipath/
+      # https://github.com/longhorn/longhorn/issues/1210
+      - multipath-tools
+      - multipath-tools-boot
     install_recommends: false
     update_cache: true
     cache_valid_time: 3600

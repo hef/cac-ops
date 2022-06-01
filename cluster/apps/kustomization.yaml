@@ -5,6 +5,7 @@ resources:
   - dex
   - external-dns
   - foundry
+  - jupyerhub
   - longhorn
   - metrics-server
   - podinfo

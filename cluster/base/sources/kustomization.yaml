@@ -6,6 +6,7 @@ resources:
   - external-dns-charts.yaml
   - jetstack-charts.yaml
   - k8s-at-home-charts.yaml
+  - jupyterhub-charts.yaml
   - longhorn-charts.yaml
   - metrics-server-charts.yaml
   - podinfo-charts.yaml
