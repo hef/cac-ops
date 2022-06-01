@@ -14,3 +14,9 @@ spec:
         kind: HelmRepository
         name: jupyterhub-charts
         namespace: flux-system
+  values:
+    prePuller:
+      hook:
+        enabled: false
+      continuous:
+        enabled: false
