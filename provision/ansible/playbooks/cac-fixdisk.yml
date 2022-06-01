@@ -1,0 +1,28 @@
+---
+- hosts:
+    - master
+    - worker
+  gather_facts: true
+  any_errors_fatal: true
+  tasks:
+    - name: create sda2
+      community.general.parted:
+        device: /dev/sda
+        number: 2
+        flags: [lvm]
+        state: present
+        # part_start: "{{sda_info.partitions[0].end}}s" this needs to be +1 sometimes
+        part_start: "20969472s" # lol
+        part_end: "100%"
+        resize: true
+    - name: Resize Volume Group /dev/ubuntu-vg
+      community.general.lvg:
+        vg: ubuntu-vg
+        pvs: /dev/sda1,/dev/sda2
+        pvresize: true
+    - name: Resize /dev/ubuntu-vg/root
+      community.general.lvol:
+        vg: ubuntu-vg
+        lv: root
+        size: +100%FREE
+        resizefs: true
