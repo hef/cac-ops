@@ -25,3 +25,6 @@ spec:
       enabled: true
       hosts:
         - jupyterhub.hef.wtf
+    proxy:
+      service:
+        type: ClusterIP
