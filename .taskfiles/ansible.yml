@@ -1,3 +1,4 @@
+---
 version: 3
 
 env:
@@ -79,3 +80,9 @@ tasks:
     dir: provision/ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/cac-resize.yml"
+
+  playbook:cac-fixdisk:
+    desc: fix failed lvm2 stuff
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/cac-fixdisk.yml"
