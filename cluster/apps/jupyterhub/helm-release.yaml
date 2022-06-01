@@ -20,3 +20,7 @@ spec:
         enabled: false
       continuous:
         enabled: false
+    ingress:
+      enabled: true
+      hosts:
+        - jupyterhub.hef.wtf
