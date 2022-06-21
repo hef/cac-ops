@@ -37,13 +37,13 @@ tasks:
     desc: Reboot all the k8s nodes
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become"
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/bin/systemctl reboot' --become"
 
   adhoc:poweroff:
     desc: Shutdown all the k8s nodes
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become"
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/bin/systemctl poweroff' --become"
 
   adhoc:lsb_release:
     desc: Get LSB Release of all nodes
@@ -86,3 +86,14 @@ tasks:
     dir: provision/ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/cac-fixdisk.yml"
+
+  adhoc:df:
+    desc: run df
+    dir: provision/ansible
+    cmds:
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'bash -c \"df -h /dev/mapper/ubuntu--vg-root | tail -n +2\" ' --become"
+  adhoc:partprobe:
+    desc: run df
+    dir: provision/ansible
+    cmds:
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'partprobe' --become"

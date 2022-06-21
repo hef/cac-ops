@@ -1,17 +1,34 @@
 ---
+# https://www.voip-info.org/forum/threads/cloudatcost-debian-install-not-using-all-diskspace.19283/post-120957
+# https://panel.cloudatcost.com/download/zang-debian.sh
+# https://panel.cloudatcost.com/download/zang-ubuntu18.sh
 - hosts:
     - master
     - worker
   gather_facts: true
   any_errors_fatal: true
   tasks:
+    - name: Remove Swap from fstab
+      ansible.posix.mount:
+        path: none
+        fstype: swap
+        state: absent
+    - name: Disable Swap
+      command: swapoff -a
+      when: ansible_swaptotal_mb > 0
+    - name: remove swap LV
+      community.general.lvol:
+        vg: ubuntu-vg
+        lv: swap_1
+        force: yes
+        state: absent
     - name: create sda2
       community.general.parted:
         device: /dev/sda
         number: 2
         flags: [lvm]
         state: present
-        # part_start: "{{sda_info.partitions[0].end}}s" this needs to be +1 sometimes
+        # part_start: "{{sda_info.partitions[0].end}}s" this needs to be +1
         part_start: "20969472s" # lol
         part_end: "100%"
         resize: true
@@ -26,3 +43,8 @@
         lv: root
         size: +100%FREE
         resizefs: true
+    - name: remove C@C user "user"
+      ansible.builtin.user:
+        name: user
+        state: "absent"
+        remove: true
