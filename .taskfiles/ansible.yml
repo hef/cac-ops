@@ -92,6 +92,7 @@ tasks:
     dir: provision/ansible
     cmds:
       - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'bash -c \"df -h /dev/mapper/ubuntu--vg-root | tail -n +2\" ' --become"
+
   adhoc:partprobe:
     desc: run df
     dir: provision/ansible
