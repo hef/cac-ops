@@ -18,7 +18,7 @@ tasks:
     env:
       KUBECONFIG: "{{.PROJECT_DIR}}/provision/kubeconfig:{{.HOME}}/.kube/config"
     cmds:
-      - sed -i '' -e 's/127.0.0.1/142.47.89.233/g' {{.PROJECT_DIR}}/provision/kubeconfig
+      - sed -i '' -e 's/127.0.0.1/142.47.218.5/g' {{.PROJECT_DIR}}/provision/kubeconfig
       - sed -i '' -e 's/default/cac-cluster/g' {{.PROJECT_DIR}}/provision/kubeconfig
       - echo ${KUBECONFIG}
       - kubectl config view --flatten > ~/.kube/newconfig
