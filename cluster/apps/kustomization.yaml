@@ -13,4 +13,5 @@ resources:
   - simplelb
   - reloader
   - traefik
+  - vault
   - whoami
