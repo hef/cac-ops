@@ -18,6 +18,7 @@ spec:
     ingress:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-google-sso@kubernetescrd
       enabled: true
       ingressClassName: traefik
       hosts:
