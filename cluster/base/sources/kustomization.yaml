@@ -4,9 +4,10 @@ resources:
   - cowboysysop-charts.yaml
   - dex-charts.yaml
   - external-dns-charts.yaml
+  - hashicorp-charts.yaml
   - jetstack-charts.yaml
-  - k8s-at-home-charts.yaml
   - jupyterhub-charts.yaml
+  - k8s-at-home-charts.yaml
   - longhorn-charts.yaml
   - metrics-server-charts.yaml
   - podinfo-charts.yaml
