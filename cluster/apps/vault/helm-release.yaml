@@ -23,3 +23,8 @@ spec:
         raft:
           enabled: true
           setNodeId: true
+      ingress:
+        enabled: true
+        hosts:
+          - host: vault.hef.wtf
+            paths: []
