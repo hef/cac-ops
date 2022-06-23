@@ -14,3 +14,7 @@ spec:
         kind: HelmRepository
         name: hashicorp-charts
         namespace: flux-system
+  values:
+    server:
+      ha:
+        enabled: true
