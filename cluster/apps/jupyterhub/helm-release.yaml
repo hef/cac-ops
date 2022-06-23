@@ -22,6 +22,8 @@ spec:
       continuous:
         enabled: false
     ingress:
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-google-sso@kubernetescrd
       enabled: true
       hosts:
         - jupyterhub.hef.wtf
