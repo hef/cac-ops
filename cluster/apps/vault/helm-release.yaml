@@ -16,5 +16,10 @@ spec:
         namespace: flux-system
   values:
     server:
+      standalone:
+        enabled: false
       ha:
         enabled: true
+        raft:
+          enabled: true
+          setNodeId: true
