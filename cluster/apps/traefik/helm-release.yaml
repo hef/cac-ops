@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
   values:
     deployment:
-      replicas: 2
+      replicas: 1
       #dnsPolicy: ClusterFirstWithHostNet
     providers:
       kubernetesIngress:
