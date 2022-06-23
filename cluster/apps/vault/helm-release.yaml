@@ -18,16 +18,14 @@ spec:
     server:
       standalone:
         enabled: false
-
       ha:
         enabled: true
         raft:
           enabled: true
           setNodeId: true
+        apiAddr: https://vault.hef.wtf
       ingress:
         enabled: true
         hosts:
           - host: vault.hef.wtf
             paths: []
-      extraEnvironmentVars:
-        VAULT_API_ADDR: https://vault.hef.wtf
