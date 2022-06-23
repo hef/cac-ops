@@ -19,5 +19,7 @@ spec:
       defaultDataLocality: "best-effort"
       replicaAutoBalance: "best-effort"
     ingress:
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-google-sso@kubernetescrd
       enabled: true
       host: longhorn.hef.wtf
