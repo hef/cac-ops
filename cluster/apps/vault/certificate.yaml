@@ -5,7 +5,7 @@ metadata:
   name: vault.hef.wtf
   namespace: vault
 spec:
-  secretName: hef.wtf-tls
+  secretName: vault.hef.wtf-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
