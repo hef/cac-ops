@@ -5,12 +5,12 @@ Creating a kubernetes cluster on Cloud at Cost
 
 Build servers
 ```shell
-cacctl build --cpu 4 --ram 8192 --storage 80
+repeat 20 { cacctl build --cpu 4 --ram 8192 --storage 80 }
 ```
 
 Regenerate hosts.yml file for ansible
 ```shell
-cacctl ansible-inventory > provision/ansible/hosts.yml
+cacctl ansible-inventory > provision/ansible/inventory/hosts.yml
 ```
 
 Deploy your ssh key to all servers
