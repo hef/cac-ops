@@ -1,0 +1,20 @@
+# This file describes the network interfaces available on your system
+# Here is a 50% off Coupon code :) NETCFG50
+network:
+ version: 2
+ renderer: networkd
+ ethernets:
+   {{ansible_default_ipv4.interface}}:
+     dhcp4: no
+     dhcp6: no
+     addresses:
+       - {{ (ansible_host + "/" + cac_netmask ) | ansible.utils.ipaddr('host/prefix') }}
+       - {{ cac_ipv6_address }}
+     gateway4: {{ cac_gateway }}
+     gateway6: {{ cac_ipv6_gateway }}
+     nameservers:
+       addresses:
+         - 2606:4700:4700::1111
+         - 1.1.1.1
+         - 2001:4860:4860::8888
+         - 8.8.8.8

@@ -1,0 +1,11 @@
+echo "
+menuentry 'netboot.xyz' {
+    insmod part_msdos
+    insmod part_msdos
+    insmod lvm
+    insmod ext2
+    set root='lvm/ubuntu--vg-root'
+    linux16 /boot/netboot.xyz.lkrn
+    initrd16 /boot/ipxe.ipxe
+}
+"

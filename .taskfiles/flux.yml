@@ -20,6 +20,7 @@ tasks:
   secret:
     desc: inject secret
     cmds:
+      - kubectl --kubeconfig={{.PROJECT_DIR}}/provision/kubeconfig create namespace flux-system
       - kubectl --kubeconfig={{.PROJECT_DIR}}/provision/kubeconfig -n flux-system create secret generic sops-age --from-file=age.agekey=${SOPS_AGE_KEY_FILE}
 
   helm-retry:

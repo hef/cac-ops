@@ -44,3 +44,23 @@ Diff the new config with the old one. If you are satisfied with the new config, 
 ```shell
 mv ~/.kube/newconfig ~/.kube/config
 ```
+
+## Bootstrapping Vault
+
+Initializing vault takes some extra steps
+You will need to run each unseal command 3 times for each pod.
+
+```shell
+ kubectl exec -ti vault-0 -n vault -- vault operator init
+ kubectl exec -ti vault-0 -n vault -- vault operator unseal
+```
+
+```shell
+kubectl exec -ti vault-1 -n vault -- vault operator raft join http://vault-0.vault-internal:8200
+kubectl exec -ti vault-1 -n vault -- vault operator unseal
+```
+
+```shell
+kubectl exec -ti vault-2 -n vault -- vault operator raft join http://vault-0.vault-internal:8200
+kubectl exec -ti vault-2 -n vault -- vault operator unseal
+```

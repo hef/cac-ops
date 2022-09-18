@@ -48,3 +48,16 @@
         name: user
         state: "absent"
         remove: true
+    - name: blacklist floppy
+      ansible.builtin.copy:
+        dest: /etc/modprobe.d/blacklist-floppy.conf
+        content: "blacklist floppy"
+      register: blacklist_floppy
+    - name: update-initramfs
+      ansible.builtin.command:
+        cmd: update-initramfs -u
+      when: blacklist_floppy.changed
+    - name: unload floppy module
+      community.general.modprobe:
+        name: floppy
+        state: absent

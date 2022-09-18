@@ -1,0 +1,16 @@
+---
+- hosts:
+    - master
+    - worker
+  gather_facts: yes
+  any_errors_fatal: yes
+  tasks:
+    - name: recreate 50-cloud-init.yaml
+      ansible.builtin.template:
+        src: ../templates/50-cloud-init.yaml.j2
+        dest: /etc/netplan/50-cloud-init.yaml
+      register: network_changed
+    - name: restart network
+      ansible.builtin.command:
+        cmd: netplan apply
+      when: network_changed.changed

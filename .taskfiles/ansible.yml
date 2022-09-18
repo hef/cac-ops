@@ -81,6 +81,18 @@ tasks:
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/cac-resize.yml"
 
+  playbook:cac-network:
+    desc: setup network
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/cac-network.yml"
+
+  playbook:cac-netboot:
+    desc: setup network
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/cac-netboot.yml"
+
   playbook:cac-fixdisk:
     desc: fix failed lvm2 stuff
     dir: provision/ansible

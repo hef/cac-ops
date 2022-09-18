@@ -1,0 +1,47 @@
+---
+- hosts:
+    - master
+    - worker
+  gather_facts: yes
+  any_errors_fatal: yes
+  tasks:
+    - name: Install grub-ipxe
+      ansible.builtin.apt:
+        name:
+          - grub-ipxe
+        install_recommends: false
+        update_cache: true
+        cache_valid_time: 3600
+        autoclean: true
+        autoremove: true
+        state: present
+    - name: download netboot.xyz.lkrn
+      ansible.builtin.get_url:
+        url: https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn
+        dest: /boot/netboot.xyz.lkrn
+    - name: create grub netboot entry
+      ansible.builtin.copy:
+        src: ../files/42_netboot
+        dest: /etc/grub.d/42_netboot
+        mode: '0755'
+      register: netboot_entry
+    - name: update grub settings
+      ansible.builtin.copy:
+        dest: /etc/default/grub.d/42_custom
+        content: |
+          GRUB_TIMEOUT=40
+      register: grub_settings
+      when: false
+    - name: create /boot/ipxe.ipxe
+      ansible.builtin.template:
+        src: ../templates/ipxe.ipxe.j2
+        dest: /boot/ipxe.ipxe
+    - name: create netboot2
+      ansible.builtin.template:
+        src: ../templates/43_netboot.j2
+        dest: /etc/grub.d/43_netboot
+        mode: '0755'
+    - name: update update-grub2
+      ansible.builtin.command:
+        cmd: update-grub2
+      when: netboot_entry.changed or grub_settings.changed
