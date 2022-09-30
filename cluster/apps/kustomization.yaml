@@ -6,7 +6,7 @@ resources:
   - external-dns
   - foundry
   - jupyterhub
-  #- longhorn
+  - longhorn
   - metrics-server
   - podinfo
   # - rook-ceph
