@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+  namespace: server
+  annotations:
+    external-dns.alpha.kubernetes.io/endpoints-type: HostIP
+    external-dns.alpha.kubernetes.io/hostname: server.hef.wtf
+spec:
+  selector:
+    app: server
+  ports:
+    - name: external
+      port: 4001
+  clusterIP: None

@@ -19,3 +19,4 @@ spec:
           ports:
             - containerPort: 4001
               hostPort: 4001
+              name: external
