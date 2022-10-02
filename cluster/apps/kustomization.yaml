@@ -10,6 +10,7 @@ resources:
   - metrics-server
   - podinfo
   # - rook-ceph
+  - server
   - simplelb
   - reloader
   - traefik
