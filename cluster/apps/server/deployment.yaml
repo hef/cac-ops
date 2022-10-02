@@ -16,6 +16,9 @@ spec:
       containers:
         - name: server
           image: ghcr.io/hef/tauri-app/server:1.7.0
+          envFrom:
+            - secretRef:
+                name: server
           ports:
             - containerPort: 4001
               hostPort: 4001
