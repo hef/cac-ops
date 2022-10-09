@@ -64,3 +64,8 @@ kubectl exec -ti vault-1 -n vault -- vault operator unseal
 kubectl exec -ti vault-2 -n vault -- vault operator raft join http://vault-0.vault-internal:8200
 kubectl exec -ti vault-2 -n vault -- vault operator unseal
 ```
+
+## Enabling Image Update Automation
+```shell
+kubectl create secret generic -n flux-system flux-system --from-literal=username=git --from-literal=password=<github pat with repo scope>
+```
