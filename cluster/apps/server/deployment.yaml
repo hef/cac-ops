@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: ghcr.io/hef/tauri-app/server:1.7.0 # {"$imagepolicy": "flux-system:server"}
+          image: ghcr.io/hef/tauri-app/server:1.9.0 # {"$imagepolicy": "flux-system:server"}
           envFrom:
             - secretRef:
                 name: server
