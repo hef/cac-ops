@@ -12,4 +12,5 @@ spec:
   git:
     commit:
       author:
+        name: flux
         email: flux@users.noreply.github.com
