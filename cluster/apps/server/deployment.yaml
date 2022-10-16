@@ -18,7 +18,7 @@ spec:
           image: ghcr.io/hef/tauri-app/server:1.12.1 # {"$imagepolicy": "flux-system:server"}
           env:
             - name: RUST_BACKTRACE
-              value: "1"
+              value: "full"
             - name: RUST_LOG
               value: "info"
           envFrom:
