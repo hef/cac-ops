@@ -25,6 +25,6 @@ spec:
             - secretRef:
                 name: server
           ports:
-            - containerPort: 4001
-              hostPort: 4001
+            - containerPort: 80
+              hostPort: 80
               name: external
