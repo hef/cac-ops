@@ -6,7 +6,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/endpoints-type: HostIP
     external-dns.alpha.kubernetes.io/hostname: server.hef.wtf
-    #external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
 spec:
   selector:
     app: server
