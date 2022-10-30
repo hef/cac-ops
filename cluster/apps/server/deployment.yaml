@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: ghcr.io/hef/tauri-app/server:1.16.2 # {"$imagepolicy": "flux-system:server"}
+          image: ghcr.io/hef/tauri-app/server:1.17.0 # {"$imagepolicy": "flux-system:server"}
           env:
             - name: RUST_BACKTRACE
               value: "full"
