@@ -16,7 +16,7 @@ spec:
       hostNetwork: true
       containers:
         - name: server
-          image: ghcr.io/hef/tauri-app/server:1.20.3 # {"$imagepolicy": "flux-system:server"}
+          image: ghcr.io/hef/tauri-app/server:1.20.4 # {"$imagepolicy": "flux-system:server"}
           env:
             - name: RUST_BACKTRACE
               value: "full"
