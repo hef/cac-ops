@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: foundryvtt
-          image: felddy/foundryvtt:10.285.0
+          image: felddy/foundryvtt:10.303.0
           envFrom:
             - secretRef:
                 name: foundry-secrets
